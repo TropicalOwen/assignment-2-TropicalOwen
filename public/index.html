@@ -3,13 +3,53 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Page Title</title>
+    <title>IPA Translator</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Document</title>
 </head>
 <body>
 
+    <script>
+
+        function startTranslation() {
+
+            //Functioning Somewhat
+            fetch("../en_US.json")
+            .then(mockResponses => {
+                return mockResponses.json();
+            })
+            .then(data => console.log(data));
+
+            //
+            const translation = document.getElementById("translation-output")
+
+            //Setting dataTextbox to the value to be inputted into the textbox.
+            let dataTextbox = document.getElementById("translation-input").value;
+            
+            //Setting the dataSet array to each of the words in dataTextbox.
+            const dataSet = dataTextbox.split(" ");
+            
+            //
+            translation.textContent = dataSet
+
+            //Splitting dataSet into elements.
+            dataSet.forEach(element => 
+                
+                    console.log(element)
+
+                
+            );
+
+        };
+
+    </script>
+
     <h1>IPA Translator</h1>
+
+    <input type="text" id="translation-input" class="form-controlled">
+    
+    <button onclick="startTranslation() " class="button " id="buttonid">Start Translation </button>
+
+    <h1><span id= "translation-output"></span></h1>
 
 </body>
 </html>
